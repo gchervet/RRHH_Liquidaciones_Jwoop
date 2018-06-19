@@ -13,7 +13,6 @@ var activeDirectory = new ActiveDirectory(LDAPConfig);
 var roleController = require('../../controllers/configuration/RoleController.js');
 var roleService = require('../../service/configuration/RoleService.js');
 var expireSeconds = 4000;
-var traGrupoAsignadoService = require('../../service/business/TraGrupoUsuariosService');
 
 module.exports.Authenticate = function (req, res) {
 

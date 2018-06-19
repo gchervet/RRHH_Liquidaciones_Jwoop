@@ -3,8 +3,8 @@
   "driver": "msnodesqlv8",
   "user":"gchervet",
   "domain":"KENNEDY",
-  "database":"UK_Configuration_dev",
+  "database":"unitest",
   "password":"741852852",
-  "connectionString": "Driver=msnodesqlv8;Server=192.0.2.240;Database=UK_Configuration_dev;Trusted_Connection=yes;Integrated_Security=yes",
+  "connectionString": "Driver=msnodesqlv8;Server=192.0.2.240;Database=unitest;Trusted_Connection=yes;Integrated_Security=yes",
   "port": 1433
 }

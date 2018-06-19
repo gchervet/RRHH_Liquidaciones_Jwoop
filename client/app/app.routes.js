@@ -1,5 +1,4 @@
-﻿/// <reference path="components/indicadoresDePermanencia/indicadoresDePermanencia.html" />
-app.config(['$qProvider', '$routeProvider', '$stateProvider', '$urlRouterProvider',
+﻿app.config(['$qProvider', '$routeProvider', '$stateProvider', '$urlRouterProvider',
     function ($qProvider, $routeProvider, $stateProvider, $urlRouterProvider) {
 
         $qProvider.errorOnUnhandledRejections(false);
@@ -26,103 +25,12 @@ app.config(['$qProvider', '$routeProvider', '$stateProvider', '$urlRouterProvide
             controller: 'userProfileController as vm',
             requiresAuthentication: true
         })
-        /* INGRESOS */
-        .when('/MatriculacionYArancelamiento', {
-            templateUrl: server_prefix + 'app/components/inscripciones/matriculacionYArancelamiento.html',
-            controller: 'matriculacionYArancelamientoController as vm',
+        /* RECIBOS */
+        .when('/Recibos', {
+            templateUrl: server_prefix + 'app/components/administracion/reciboList.html',
+            controller: 'reciboListController as vm',
             requiresAuthentication: true
-        })
-        .when('/ConsultaDeMatriculaciones', {
-            templateUrl: server_prefix + 'app/components/inscripciones/consultaDeMatriculaciones.html',
-            controller: 'consultaDeMatriculacionesController as vm',
-            requiresAuthentication: true
-        })
-        .when('/InscripcionAMaterias', {
-            templateUrl: server_prefix + 'app/components/inscripciones/inscripcionAMaterias.html',
-            controller: 'inscripcionAMateriasController as vm',
-            requiresAuthentication: true
-        })
-        .when('/ConsultaDeInscripcionAMaterias', {
-            templateUrl: server_prefix + 'app/components/inscripciones/consultaDeInscripcionAMaterias.html',
-            controller: 'consultaDeInscripcionAMateriasController as vm',
-            requiresAuthentication: true
-        })
-        .when('/ConsultaDeDerechosDeExamen', {
-            templateUrl: server_prefix + 'app/components/inscripciones/consultaDeDerechosDeExamen.html',
-            controller: 'consultaDeDerechosDeExamenController as vm',
-            requiresAuthentication: true
-        })
-        .when('/InscripcionAExamenes', {
-            templateUrl: server_prefix + 'app/components/inscripciones/inscripcionAExamenes.html',
-            controller: 'inscripcionAExamenesController as vm',
-            requiresAuthentication: true
-        })
-        .when('/ConsultaDeInscripcionAExamenes', {
-            templateUrl: server_prefix + 'app/components/inscripciones/consultaDeInscripcionAExamenes.html',
-            controller: 'consultaDeInscripcionAExamenesController as vm',
-            requiresAuthentication: true
-        })
-        /* PROGRAMACIÓN ACADÉMICA */
-        .when('/CrearCursoAislado', {
-            templateUrl: server_prefix + 'app/components/programacionAcademica/crearCursoAislado.html',
-            controller: 'crearCursoAisladoController as vm',
-            requiresAuthentication: true
-        })
-        .when('/CrearCursoDesdeCarrera', {
-            templateUrl: server_prefix + 'app/components/programacionAcademica/crearCursoDesdeCarrera.html',
-            controller: 'crearCursoDesdeCarreraController as vm',
-            requiresAuthentication: true
-        })
-        .when('/CrearCursoDesdeCurso', {
-            templateUrl: server_prefix + 'app/components/programacionAcademica/crearCursoDesdeCurso.html',
-            controller: 'crearCursoDesdeCursoController as vm',
-            requiresAuthentication: true
-        })
-        /* INDICADORES DE PERMANENCIA */
-        .when('/IndicadoresDePermanencia', {
-            templateUrl: server_prefix + 'app/components/indicadoresDePermanencia/indicadoresDePermanencia.html',
-            controller: 'indicadoresDePermanenciaController as vm',
-            requiresAuthentication: true
-        })
-        /* GESTIÓN DE TRÁMITES */
-        .when('/GestionarUnTramite', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/gestionarUnTramite.html',
-            controller: 'gestionarUnTramiteController as vm',
-            requiresAuthentication: true
-        })
-        .when('/BandejaDeTramites', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/bandejaDeTramites.html',
-            controller: 'bandejaDeTramitesController as vm',
-            requiresAuthentication: true
-        })
-        .when('/TramiteAnaliticoFinal', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/tramiteAnaliticoFinal.html',
-            controller: 'tramiteAnaliticoFinalController as vm',
-            requiresAuthentication: true
-        })
-        .when('/ConfirmacionDatosPersonales', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/confirmacionDatosPersonales.html',
-            controller: 'confirmacionDatosPersonalesController as vm',
-            requiresAuthentication: true
-        })
-        .when('/EstadoAcademico', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/estadoAcademico.html',
-            controller: 'estadoAcademicoController as vm',
-            requiresAuthentication: true
-        })
-        .when('/DocumentacionLibretaUniversitaria', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/documentacionLibretaUniversitaria.html',
-            controller: 'documentacionLibretaUniversitariaController as vm',
-            requiresAuthentication: true
-        })
-        .when('/PlanEstudio', {
-            templateUrl: server_prefix + 'app/components/gestionDeTramites/planEstudio.html',
-            controller: 'planEstudioController as vm',
-            requiresAuthentication: true
-        })
-        
-        
-        
+        })        
         /* DEFAULT */
         .otherwise({ redirectTo: "home" });
 
