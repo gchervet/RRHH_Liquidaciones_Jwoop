@@ -196,3 +196,22 @@
 .btn-finish{
     background-color: #00067d;
 }
+
+.recibo-list-container{
+    border-radius: 5px;
+    border: #cecece 1px solid;
+    height: 400px;
+}
+
+.recibo-list-container{
+    padding: 10px;
+    overflow: auto;
+}
+.recibo-container{
+    BACKGROUND: #e4e1e1;
+    height: 80px;
+    width: 100%;
+    border-radius: 7px;
+    display: block;
+    margin-bottom: 10px;
+}

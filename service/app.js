@@ -47,6 +47,7 @@ var menuController = require('./controllers/configuration/MenuController');
 var roleController = require('./controllers/configuration/RoleController');
 // Business Controllers
 var sessionController = require('./controllers/business/SessionController');
+var empleadoController = require('./controllers/business/EmpleadoController');
 var reciboController = require('./controllers/business/ReciboController');
 
 // Socket connection
