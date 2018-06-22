@@ -1,7 +1,6 @@
 ﻿angular.module('app')
     .controller('popupDetalleRecibosController', function ($scope, $routeParams, $rootScope, $location, Auth, $uibModal, utilityService, data, $uibModalInstance, workflowService) {
 
-        debugger;
         var popupDetalleRecibosController = this;
 
         popupDetalleRecibosController.legajo = undefined;
@@ -9,42 +8,42 @@
         popupDetalleRecibosController.Empleado = data;
         popupDetalleRecibosController.ReciboPorEmpleadoList = [];
         $scope.SearchCode = '2018';
-        $scope.MonthList = 
-        [
-            {name:'Enero', value:'01'},
-            {name:'Febrero', value:'02'},
-            {name:'Marzo', value:'03'},
-            {name:'Abril', value:'04'},
-            {name:'Mayo', value:'05'},
-            {name:'Junio', value:'06'},
-            {name:'Julio', value:'07'},
-            {name:'Agosto', value:'08'},
-            {name:'Septiembre', value:'09'},
-            {name:'Octubre', value:'10'},
-            {name:'Noviembre', value:'11'},
-            {name:'Diciembre', value:'12'}
-        ]
-        $scope.Filters = 
-        {
-            yearFilter: '2018',
-            monthFilter: {name:'Enero', value:'01'}
-        }
-        
+        $scope.MonthList =
+            [
+                { name: 'Enero', value: '01' },
+                { name: 'Febrero', value: '02' },
+                { name: 'Marzo', value: '03' },
+                { name: 'Abril', value: '04' },
+                { name: 'Mayo', value: '05' },
+                { name: 'Junio', value: '06' },
+                { name: 'Julio', value: '07' },
+                { name: 'Agosto', value: '08' },
+                { name: 'Septiembre', value: '09' },
+                { name: 'Octubre', value: '10' },
+                { name: 'Noviembre', value: '11' },
+                { name: 'Diciembre', value: '12' }
+            ]
+        $scope.Filters =
+            {
+                yearFilter: '2018',
+                monthFilter: { name: 'Enero', value: '01' }
+            }
+
         popupDetalleRecibosController.init = function () {
             Auth.tokenCookieExists();
         };
 
-        $scope.$watch('Filters.monthFilter', function(v){
+        $scope.$watch('Filters.monthFilter', function (v) {
             $scope.SearchCode = $scope.Filters.yearFilter + $scope.Filters.monthFilter.value;
         });
 
-        $scope.$watch('Filters.yearFilter', function(v){
+        $scope.$watch('Filters.yearFilter', function (v) {
             $scope.SearchCode = $scope.Filters.yearFilter + $scope.Filters.monthFilter.value;
         });
 
         popupDetalleRecibosController.cancel = function () {
             var data = {
-                messageTitle:'¿Desea salir?',
+                messageTitle: '¿Desea salir?',
                 message: '¿Estás seguro que deseas cerrar los detalles de recibos?',
                 messageType: 3
             };
@@ -58,7 +57,7 @@
                         $uibModalInstance.dismiss('finish');
                         return false;
                     }
-                    if (result == 'cancel') {                        
+                    if (result == 'cancel') {
                         console.log("CANCEL!")
                     }
                 });
@@ -76,7 +75,6 @@
             };
 
             var success_getReciboList_Request = function (response) {
-                debugger;
                 if (response.data) {
                     popupDetalleRecibosController.ReciboPorEmpleadoList = response.data;
                 }
@@ -85,5 +83,10 @@
             process_getReciboList_request();
         }
 
-
+        popupDetalleRecibosController.SavePDF = function (reciboEl) {
+            debugger;
+            if(reciboEl){
+                
+            }
+        }
     })

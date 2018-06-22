@@ -209,9 +209,27 @@
 }
 .recibo-container{
     BACKGROUND: #e4e1e1;
-    height: 80px;
+    padding: 8px;
+    height: 115px;
     width: 100%;
     border-radius: 7px;
     display: block;
     margin-bottom: 10px;
+}
+
+.recibo-item-title{    
+    color: #337ab7;
+    font-weight: bold;    
+}
+
+.recibo-item-value{
+
+}
+
+.recibo-item-pdf{
+    height: 97px;
+    width: 112%;
+    /* border-radius: 6px; */
+    /* background: white; */
+    border-right: 2px #b1b1b1 solid;
 }

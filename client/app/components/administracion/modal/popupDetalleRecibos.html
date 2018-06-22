@@ -54,16 +54,49 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-12 col-centered">
-                                <button class="btn btn-primary pull-right" ng-click="vm.getReciboList()">Buscar recibos</button>
-                            </div>
+                        <div class="col-md-12 col-centered">
+                            <button class="btn btn-primary pull-right" ng-click="vm.getReciboList()">Buscar recibos</button>
                         </div>
+                    </div>
                     <hr />
                     <div class="row" style="padding: 0 16px;">
                         <div class="col-md-12 recibo-list-container">
                             <div class="recibo-container" ng-repeat="recibo in vm.ReciboPorEmpleadoList">
-								<div class="row"></div>
-								<div class="row"></div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="recibo-item-pdf" ng-click="vm.SavePDF(recibo)">
+                                            <span><i class="far fa-file-pdf"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-3 recibo-item-title">Código concepto:</div>
+                                            <div class="col-md-9 recibo-item-value">
+                                                <b>{{recibo.CodigoConcepto}}</b>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-3 recibo-item-title">Empresa:</div>
+                                            <div class="col-md-3 recibo-item-value">
+                                                <b>{{recibo.Empresa}}</b>
+                                            </div>
+                                            <div class="col-md-3 recibo-item-title">Monto:</div>
+                                            <div class="col-md-3 recibo-item-value">
+                                                <b>${{recibo.Monto}}</b>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-4 recibo-item-title">Descripción del concepto:</div>
+                                            <div class="col-md-8 recibo-item-value">{{recibo.DescripcionConcepto}}</div>
+                                        </div>
+                                        <br />
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -72,7 +105,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-centered">
-                    <button class="btn btn-primary pull-right" ng-click="vm.cancel()" style="margin-right: 54px;margin-bottom: 19px;">Cerrar</button>
+                <button class="btn btn-primary pull-right" ng-click="vm.cancel()" style="margin-right: 54px;margin-bottom: 19px;">Cerrar</button>
             </div>
         </div>
     </div>

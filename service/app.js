@@ -49,6 +49,7 @@ var roleController = require('./controllers/configuration/RoleController');
 var sessionController = require('./controllers/business/SessionController');
 var empleadoController = require('./controllers/business/EmpleadoController');
 var reciboController = require('./controllers/business/ReciboController');
+var fileController = require('./controllers/business/FileController');
 
 // Socket connection
 io.on('connection', function(socket){
