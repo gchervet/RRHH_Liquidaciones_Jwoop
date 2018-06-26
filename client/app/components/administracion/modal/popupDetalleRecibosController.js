@@ -83,10 +83,16 @@
             process_getReciboList_request();
         }
 
-        popupDetalleRecibosController.SavePDF = function (reciboEl) {
-            debugger;
+        popupDetalleRecibosController.OpenReciboModal = function (reciboEl) {
             if(reciboEl){
-                
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'app/components/administracion/modal/popupRecibo.html',
+                    controller: 'popupReciboController as vm',
+                    windowClass: 'app-modal-window',
+                    resolve: {
+                        data: reciboEl
+                    }
+                });
             }
         }
     })

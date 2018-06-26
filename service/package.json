@@ -29,6 +29,8 @@
     "jsonwebtoken": "^8.1.0",
     "mssql": "^4.1.0",
     "nodemailer": "^4.6.4",
+    "pdfmake": "^0.1.37",
+    "phantom-html-to-pdf": "^0.5.6",
     "q": "^1.5.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",

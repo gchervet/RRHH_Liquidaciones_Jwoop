@@ -1,4 +1,4 @@
-const socket = io('http://localhost:9000');
+const socket = io('http://10.9.0.112:9000');
 
 // Este desarrollo deberia darse en cualquier elemento que utilice socket io client
 socket.on('showNotification', function(data){

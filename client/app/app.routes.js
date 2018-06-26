@@ -52,7 +52,7 @@ app.run(['myUrl', '$rootScope', '$location', 'Auth', 'blockUIConfig',
         // Setting service url
         $rootScope.myUrl = myUrl;
 
-        $rootScope.WEB_SOCKET_URL = "http://localhost:9000";
+        $rootScope.WEB_SOCKET_URL = "http://10.9.0.112:9000";
         
         /* Setting global variables */
         // 4.Client\app\components\indicadoresDePermanencia\indicadoresDePermanencia.html
