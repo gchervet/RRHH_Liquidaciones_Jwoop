@@ -55,6 +55,6 @@ io.on('connection', function(socket){
     console.log('a user connected');
 });
 
-server.listen(9000, function(){
-    console.log("server running on port 9000");
+server.listen(9009, function(){
+    console.log("server running on port 9009");
 })  
