@@ -1,7 +1,9 @@
 /* General configuration */
+var bcrypt = require('bcrypt');
 var ActiveDirectory = require('activedirectory');
 var JWT = require('jsonwebtoken');
 var sessionTokenService = require('../../model/configuration/SessionTokenModel');
+var UserModel = require('../../model/configuration/UserModel');
 
 var LDAPConfig = {
     url: 'LDAP://AR-WINDC-01.central.kennedy.edu.ar',
@@ -22,115 +24,137 @@ module.exports.Authenticate = function (req, res) {
     //  "password":"2"
     //}    
 
-    activeDirectory.authenticate(req.body.UserName, req.body.Password, function (err, auth) {
+    if (settings.connectionType == "database") {
 
-        if (err) {
-            console.log('ERROR: ' + JSON.stringify(err));
-            res.json({
-                ValidLogin: false,
-                ResponseMessage: err,
-                Error: err.error,
-                ResponseStatus: null,
-                Token: null,
-                name: req.body.UserName,
-                permissions: [],
-                FailedLoginCode: 2
-            })
-        }
-        else if (auth) {
-
-            // Authentication success
-
-            sessionTokenService.ValidateIfTokenAndUserAreLoggedIn({ username: req.body.UserName }).then(resolve => {
-
-                if (resolve.recordset.length == 0) {
-                    // No hay registros del usuario
-                    var user = {
-                        username: req.body.UserName,
-                        email: req.body.Password
+        // Se encripta el password y se verifica que sea igual al de la BDD
+        UserModel.GetPasswordHashByUsername(req.body.UserName).then(function(result){
+            if(result[0]){
+                bcrypt.compare(req.body.Password, result[0].Password, function(err, res) {
+                    // Comparacion de password
+                    if(res){
+                        // El password es correcto
+                        var ress = res;
                     }
-                    var token = JWT.sign(user, process.env.SECRET_KEY, {
-                        expiresIn: expireSeconds
-                    });
-                    sessionTokenService.CreateNewSessionToken({ username: req.body.UserName, token: token, expireSeconds: expireSeconds });
+                    else{
+                        // El password es incorrecto
+                        var ress = res;
+                    }
+                });
+            }
+        })
+    }
+    else {
 
-                    var usernameWithoutDomain = req.body.UserName.split('@')[0];
+        activeDirectory.authenticate(req.body.UserName, req.body.Password, function (err, auth) {
 
-                    var permissionListRequest = roleService.GetRolePermissionByUsername;
-                    var permissionList = [];
-                    permissionListRequest(usernameWithoutDomain).then(permissionResult => {
+            if (err) {
+                console.log('ERROR: ' + JSON.stringify(err));
+                res.json({
+                    ValidLogin: false,
+                    ResponseMessage: err,
+                    Error: err.error,
+                    ResponseStatus: null,
+                    Token: null,
+                    name: req.body.UserName,
+                    permissions: [],
+                    FailedLoginCode: 2
+                })
+            }
+            else if (auth) {
 
-                        res.json({
-                            ValidLogin: true,
-                            ResponseMessage: null,
-                            Error: null,
-                            ResponseStatus: 200,
-                            Token: token,
-                            name: req.body.UserName,
-                            permissions: permissionResult,
-                            FailedLoginCode: 1
-                        })
+                // Authentication success
 
-                    });
+                sessionTokenService.ValidateIfTokenAndUserAreLoggedIn({ username: req.body.UserName }).then(resolve => {
 
-                }
-                else {
-                    // Llego un registro del usuario
-                    var actualSessionToken = resolve.recordset[0];
+                    if (resolve.recordset.length == 0) {
+                        // No hay registros del usuario
+                        var user = {
+                            username: req.body.UserName,
+                            email: req.body.Password
+                        }
+                        var token = JWT.sign(user, process.env.SECRET_KEY, {
+                            expiresIn: expireSeconds
+                        });
+                        sessionTokenService.CreateNewSessionToken({ username: req.body.UserName, token: token, expireSeconds: expireSeconds });
 
-                    if (actualSessionToken.ExpirationDate.valueOf() > new Date().valueOf() && !actualSessionToken.Expired) {
+                        var usernameWithoutDomain = req.body.UserName.split('@')[0];
 
-                        // Hay que marcar la baja logica del token anterior
-                        sessionTokenService.DeleteTokenLogically({ username: actualSessionToken.Username, token: actualSessionToken.SessionToken });
+                        var permissionListRequest = roleService.GetRolePermissionByUsername;
+                        var permissionList = [];
+                        permissionListRequest(usernameWithoutDomain).then(permissionResult => {
+
+                            res.json({
+                                ValidLogin: true,
+                                ResponseMessage: null,
+                                Error: null,
+                                ResponseStatus: 200,
+                                Token: token,
+                                name: req.body.UserName,
+                                permissions: permissionResult,
+                                FailedLoginCode: 1
+                            })
+
+                        });
 
                     }
-                    var user = {
-                        username: req.body.UserName,
-                        email: req.body.Password
+                    else {
+                        // Llego un registro del usuario
+                        var actualSessionToken = resolve.recordset[0];
+
+                        if (actualSessionToken.ExpirationDate.valueOf() > new Date().valueOf() && !actualSessionToken.Expired) {
+
+                            // Hay que marcar la baja logica del token anterior
+                            sessionTokenService.DeleteTokenLogically({ username: actualSessionToken.Username, token: actualSessionToken.SessionToken });
+
+                        }
+                        var user = {
+                            username: req.body.UserName,
+                            email: req.body.Password
+                        }
+
+                        var token = JWT.sign(user, process.env.SECRET_KEY, {
+                            expiresIn: expireSeconds
+                        });
+
+                        // Almacenamos el nuevo token en la base
+                        sessionTokenService.CreateNewSessionToken({ username: req.body.UserName, token: token, expireSeconds: expireSeconds });
+
+                        // Permission list
+                        var permissionListRequest = roleService.GetRolePermissionByUsername;
+                        var permissionList = [];
+                        var usernameWithoutDomain = req.body.UserName.split('@')[0];
+
+                        permissionListRequest(usernameWithoutDomain).then(permissionResult => {
+
+                            res.json({
+                                ValidLogin: true,
+                                ResponseMessage: null,
+                                Error: null,
+                                ResponseStatus: 200,
+                                Token: token,
+                                name: req.body.UserName,
+                                permissions: permissionResult,
+                                FailedLoginCode: 1
+                            })
+                        });
                     }
+                });
+            }
+            else {
+                // Authentication failure
+                res.json({
+                    ValidLogin: false,
+                    ResponseMessage: null,
+                    Error: null,
+                    ResponseStatus: 401,
+                    Token: null,
+                    name: req.body.UserName,
+                    permissions: [],
+                    FailedLoginCode: 2
+                })
+            }
 
-                    var token = JWT.sign(user, process.env.SECRET_KEY, {
-                        expiresIn: expireSeconds
-                    });
-
-                    // Almacenamos el nuevo token en la base
-                    sessionTokenService.CreateNewSessionToken({ username: req.body.UserName, token: token, expireSeconds: expireSeconds });
-
-                    // Permission list
-                    var permissionListRequest = roleService.GetRolePermissionByUsername;
-                    var permissionList = [];
-                    var usernameWithoutDomain = req.body.UserName.split('@')[0];
-
-                    permissionListRequest(usernameWithoutDomain).then(permissionResult => {
-
-                        res.json({
-                            ValidLogin: true,
-                            ResponseMessage: null,
-                            Error: null,
-                            ResponseStatus: 200,
-                            Token: token,
-                            name: req.body.UserName,
-                            permissions: permissionResult,
-                            FailedLoginCode: 1
-                        })
-                    });
-                }
-            });
-        }
-        else {
-            // Authentication failure
-            res.json({
-                ValidLogin: false,
-                ResponseMessage: null,
-                Error: null,
-                ResponseStatus: 401,
-                Token: null,
-                name: req.body.UserName,
-                permissions: [],
-                FailedLoginCode: 2
-            })
-        }
-
-    });
+        });
+    }
 
 };

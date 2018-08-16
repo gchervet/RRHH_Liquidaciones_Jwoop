@@ -1,3 +1,4 @@
+global.settings = require('../service/config/settings.json')
 var express = require('express');
 global.app = express();  
 var server = require('http').createServer(app);  
