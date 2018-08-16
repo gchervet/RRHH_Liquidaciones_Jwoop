@@ -1,5 +1,5 @@
 ﻿angular.module('app')
-    .controller('popupDetalleRecibosController', function ($scope, $routeParams, $rootScope, $location, Auth, $uibModal, utilityService, data, $uibModalInstance, workflowService) {
+    .controller('popupDetalleRecibosController', function ($scope, Auth, $uibModal, utilityService, data, $uibModalInstance) {
 
         var popupDetalleRecibosController = this;
 
