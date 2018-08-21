@@ -6,12 +6,11 @@ module.exports.GetAll = function(req, res){
     return MenuGroupModel.GetAll().then(function(result, $filter){
         
         var rtn = [];
-        if(result.recordset){
-            result.recordset.forEach(element => {
+        if(result){
+            result.forEach(element => {
                 
                 var actualMenuGroup = HelperService.findObjectByKey(rtn, 'Id', element.IdMenuGroup);
-                
-                
+                                
                 if(actualMenuGroup){
                     
                     var actualMenu = HelperService.findObjectByKey(actualMenuGroup.MenuList, 'Id', element.IdMenu);

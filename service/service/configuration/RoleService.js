@@ -13,8 +13,8 @@ module.exports.GetRolePermissionByUsername = function(req, res){
     return RoleModel.GetRolePermissionByUsername(username).then(result => {
         
         var rtn = [];
-        if(result.recordset){
-            result.recordset.forEach(element => {
+        if(result){
+            result.forEach(element => {
                 rtn.push(element.Name);
             });
         }

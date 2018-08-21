@@ -5,8 +5,8 @@ module.exports.GetAll = function (req, res) {
     return EmpleadoModel.GetAll().then(function (result, $filter) {
 
         var rtn = [];
-        if (result.recordset) {
-            result.recordset.forEach(element => {
+        if (result) {
+            result.forEach(element => {
 
                 if (element) {
                     // Se arma el DTO

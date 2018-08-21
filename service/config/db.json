@@ -1,10 +1,6 @@
 {
-    "server": "127.0.0.1",
-    "driver": "msnodesqlv8",
-    "user":"root",
-    "password":"",
-    "domain":"KENNEDY",
-    "database":"gestion_conf_dev",
-    "connectionString": "Driver=msnodesqlv8;Server=127.0.0.1;Database=gestion_conf_dev;Trusted_Connection=yes;Integrated_Security=yes",
-    "port": 3306
-}
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "gestion_data_dev"
+  }

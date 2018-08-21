@@ -17,6 +17,5 @@ exports.GetPasswordHashByUsername = function (username) {
         connection.query("SELECT `Password` FROM `User` WHERE Username = '" + username + "'", function (error, results, fields) {
             res(results);
         });
-
     });
 }

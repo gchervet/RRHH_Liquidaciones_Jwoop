@@ -5,8 +5,8 @@ module.exports.GetReciboList = function (req, res) {
     return ReciboModel.GetReciboList(req.params.legProvi, req.params.ames).then(function (result, $filter) {
 
         var rtn = [];
-        if (result.recordset) {
-            result.recordset.forEach(element => {
+        if (result) {
+            result.forEach(element => {
 
                 if (element) {
                     // Se arma el DTO
