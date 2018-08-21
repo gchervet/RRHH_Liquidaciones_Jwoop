@@ -1,0 +1,2 @@
+INSERT INTO RVACACIG(Numdoc, Codigo, Feini, Fefin, Dias, Status, Numrem, Opd, Dmi, Dmf, Ampm, Fecha_ret, Motanul, Pertom, Jdd) VALUES (30, 'BORRAR', '2013-08-15 00:00:00.000', '2013-08-28 00:00:00.000', 14.00, 'V', 0, 1, 14, 0, 1, '2013-08-29 00:00:00.000', '', '2012', 0);
+INSERT INTO RVACACIG(Numdoc, Codigo, Feini, Fefin, Dias, Status, Numrem, Opd, Dmi, Dmf, Ampm, Fecha_ret, Motanul, Pertom, Jdd) VALUES (32, 'BORRAR', '2018-07-01 00:00:00.000', '2018-07-14 00:00:00.000', 14.00, 'V', 0, 1, 14, 0, 1, '2018-07-16 00:00:00.000', '', '', 0);

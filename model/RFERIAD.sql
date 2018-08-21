@@ -1,0 +1,13 @@
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-01-01 00:00:00.000', 'F', 'Año Nuevo ', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-03-20 00:00:00.000', 'M', 'Jueves Santo (Semana Santa) ', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-03-21 00:00:00.000', 'M', 'Viernes Santo (Semana santa)', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-03-24 00:00:00.000', 'F', 'Dia Nacional de la Memoria', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-04-02 00:00:00.000', 'F', 'Día de la Soberanía Nacional', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-05-01 00:00:00.000', 'F', 'Día del Trabajador', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-05-25 00:00:00.000', 'F', 'Primerbierno Patrio', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-06-16 00:00:00.000', 'M', 'Día de la Bandera ', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-07-09 00:00:00.000', 'F', 'Declaración de la Independenci', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-08-18 00:00:00.000', 'M', 'Muerte del Gral. San Martín ', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2013-10-13 00:00:00.000', 'M', 'Dia del respeto a la div. Cult', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2018-12-08 00:00:00.000', 'F', 'Asunción de la Virgen ', ' ');
+INSERT INTO RFERIAD(Jdd, Fecha, Tipo, Motivo, Condicion) VALUES (0, '2018-12-25 00:00:00.000', 'F', 'Navidad ', ' ');

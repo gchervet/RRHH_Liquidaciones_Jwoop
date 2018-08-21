@@ -1,0 +1,2 @@
+INSERT INTO tbcascom(comcodigo, comlegajo, comfecha, comhora, comtipomov, comracion, comdiaan, comticket, commanaut, comreloj) VALUES (1, '23', '2012-10-01 00:00:00.000', '10:00', 'E', 2, 0, 0, 'M', '');
+INSERT INTO tbcascom(comcodigo, comlegajo, comfecha, comhora, comtipomov, comracion, comdiaan, comticket, commanaut, comreloj) VALUES (2, ' 20101', '2012-09-15 00:00:00.000', '05:31', 'E', 1, 0, 0, 'M', '');

@@ -1,0 +1,1 @@
+INSERT INTO RDESCUR(Curso, Descrip, Institu, Nivel, Costo, Horas, Relator, Fecha_ini, Fecha_ter, Compet, EsSence, Cordina, Objetivo, Metodo, Obligat, Unidad, Tipo, Jdd) VALUES ('PR1 ', 'PayRoll Operador Básico', 1, 1, 100.0000, 12.0000, 'Elisabeth Keller', '2007-01-01 00:00:00.000', '3000-01-01 00:00:00.000', 1, 'N', 'EXT', '', 0, '', 0, 0, 0);

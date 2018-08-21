@@ -1,0 +1,2 @@
+INSERT INTO RULTSEL(Jdd, jdato, Usuario, Codigo, rut) VALUES (0, 'BMODELO ', 'PERSONAL', 'BORRAR', '2023234567-6');
+INSERT INTO RULTSEL(Jdd, jdato, Usuario, Codigo, rut) VALUES (0, 'MODELO', 'PERSONAL', 'BORRAR', '2023234567-6');

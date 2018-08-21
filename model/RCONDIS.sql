@@ -1,0 +1,12 @@
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Activos', ' ESTADO =''A''');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Baja en primera quincena', 'DAY(Q.FECHA_RET)<16');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Baja en segunda quincena', 'DAY(Q.FECHA_RET)>15');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Confidenciales', 'CONFID = ''S''');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'LEY 27.430', 'Q.SIT_LAB<>313');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Liq. Final', 'Q.MOTI_RET > 0');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Liq. Indem. Preaviso', 'Q.MOTI_RET = 4 OR Q.MOTI_RET=5');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Liq. Indemn. Antigüedad', 'Q.MOTI_RET=3 OR Q.MOTI_RET=4');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Liq. Indemnizaciones', 'Q.MOTI_RET=4');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Mensuales ', 'REGPAG = ''M''');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Nómina General (sin confid.)', 'CONFID <> ''S'' ');
+INSERT INTO RCONDIS(Jdd, Usuario, Descrip, Condicion) VALUES (0, 'PERSONAL', 'Quincenales', 'REGPAG = ''Q''');
