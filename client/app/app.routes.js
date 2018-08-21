@@ -31,6 +31,12 @@
             controller: 'reciboListController as vm',
             requiresAuthentication: true
         })        
+        /* AUSENTISMO */
+        .when('/Ausencias', {
+            templateUrl: server_prefix + 'app/components/administracion/ausentismoList.html',
+            controller: 'ausentismoListController as vm',
+            requiresAuthentication: true
+        })       
         /* DEFAULT */
         .otherwise({ redirectTo: "home" });
 

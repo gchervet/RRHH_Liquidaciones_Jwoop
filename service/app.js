@@ -46,10 +46,11 @@ secureRoutes.use(function(req, res, correctCallbackFunction){
 //Configuartion Controllers
 var menuController = require('./controllers/configuration/MenuController');
 var roleController = require('./controllers/configuration/RoleController');
+var sessionController = require('./controllers/configuration/SessionController');
 // Business Controllers
-var sessionController = require('./controllers/business/SessionController');
 var empleadoController = require('./controllers/business/EmpleadoController');
 var reciboController = require('./controllers/business/ReciboController');
+var ausentismoController = require('./controllers/business/AusentismoController');
 
 // Socket connection
 io.on('connection', function(socket){
